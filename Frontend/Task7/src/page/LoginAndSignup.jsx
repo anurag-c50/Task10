@@ -148,7 +148,7 @@ export default function LoginAndSignup() {
     const SignupValidation = () => {
         var emailRegex =/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if(SignupData.Username===""){
-            setError({ ...Erroyr, Error1: { err: 'Empty Username', check: true } });
+            setError({ ...Error, Error1: { err: 'Empty Username', check: true } });
             return false;
         }
         if(SignupData.Email===""){
@@ -306,6 +306,10 @@ const LoginSubmit=async(e)=>{
         e.preventDefault()
         ImageRef.current.click()
     }
+    const Resetpassword=(e)=>{
+        e.preventDefault();
+        navigate("/forgetpassword")
+    }
   return (
     <Container><div className={`${ChangeLoginToSignup?"Container Change":"Container"}`}>
         <form className={`form ${ChangeLoginToSignup&&"login"}`}>
@@ -323,7 +327,7 @@ const LoginSubmit=async(e)=>{
                 )
             })}
             <div className="pass-link">
-            <a href >Forgot password?</a>
+            <a href onClick={(e)=>{Resetpassword(e)}} >Forgot password?</a>
             </div>
             <div className="field">
               <input type="submit" onClick={(e)=>{LoginSubmit(e)}} className="button" id="input" value="Login"></input>
